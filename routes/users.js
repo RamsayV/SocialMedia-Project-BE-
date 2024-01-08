@@ -5,10 +5,12 @@ import {
     addRemoveFriend,
 } from "../controllers/users.js"
 import { verifyToken} from "../middleware/auth.js"
-import { verify } from "jsonwebtoken"
+import pkg from 'jsonwebtoken'
+
 
 
 const router = express.Router()
+const { verify } = pkg
 
 // READ
 router.get("/:id", verifyToken, getUser)
