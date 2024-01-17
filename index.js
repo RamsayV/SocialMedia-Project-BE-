@@ -63,9 +63,18 @@ mongoose
   .connect(process.env.MONGO_URL)
   .then(() => {
     app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
-
-    /* ADD DATA ONE TIME */
-    // User.insertMany(users);
-    // Post.insertMany(posts);
+    mongoose.connection.db.dropDatabase()
+      .then(() => {
+        console.log('Database dropped');
+        // Insert new data after the database has been dropped
+        User.insertMany(users)
+          .then(() => console.log('Users inserted'))
+          .catch(err => console.error('Error inserting users:', err));
+        
+        Post.insertMany(posts)
+          .then(() => console.log('Posts inserted'))
+          .catch(err => console.error('Error inserting posts:', err));
+      })
+      .catch(err => console.error('Error dropping database:', err));
   })
   .catch((error) => console.log(`${error} did not connect`));
