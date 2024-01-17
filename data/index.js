@@ -66,7 +66,7 @@ export const users = [
     lastName: "Carmack",
     email: "whatchadoing@gmail.com",
     password: "$2b$10$dsasdgsagasda//G9JxQ4bQ8KXf4OAIe/X/AK9skyWUy",
-    picturePath: "p6.jpeg",
+    picturePath: "John_Carmack.jpeg",
     friends: [],
     location: "Shawnee Mission, Kansas",
     occupation: "Software Engineer",
